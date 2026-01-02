@@ -2,8 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>بحبك ❤️</title>
-
+<title>بحبك يا ديدا ❤️</title>
 <style>
 html, body {
     margin: 0;
@@ -11,8 +10,8 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
-    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at bottom, #0a0a2a, #000);
+    font-family: 'Cairo', sans-serif;
 }
 
 canvas {
@@ -23,34 +22,54 @@ canvas {
 }
 
 .text {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
     color: #fff;
-    font-size: 70px;
     font-weight: bold;
-    text-shadow: 0 0 20px #ff4d6d;
     z-index: 2;
+}
+
+.text div:first-child {
+    font-size: 80px;
+    text-shadow: 0 0 10px #ff4d6d, 0 0 30px #ff4d6d, 0 0 60px #ff4d6d;
+    animation: glow 2s infinite alternate;
+}
+
+.text div:last-child {
+    font-size: 50px;
+    margin-top: 10px;
+    text-shadow: 0 0 5px #ff9d9d, 0 0 15px #ff9d9d;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
 }
 </style>
 </head>
-
 <body>
 
-<canvas id="c"></canvas>
-<div class="text">بحبك ❤️</div>
+<canvas id="canvas"></canvas>
+
+<div class="text">
+    <div>بحبك ❤️</div>
+    <div>يا ديدا 🌸</div>
+</div>
 
 <script>
-const canvas = document.getElementById("c");
+const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 resize();
-addEventListener("resize", resize);
+window.addEventListener('resize', resize);
 
 let particles = [];
 
